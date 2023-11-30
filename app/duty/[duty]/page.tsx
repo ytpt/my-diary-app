@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Calendar from '../../../components/Calendar';
 
-export default async function Duty({ params: {duty} } : { params: {duty: string} }) {
+export default async function Duty( { params: {duty} } : { params: {duty: string} } ) {
     const decodedDuty = decodeURI(duty);
 
     return (

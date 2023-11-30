@@ -1,10 +1,10 @@
 import Image from 'next/image'
 
 export default  function DayState({ day }: {day: boolean | undefined}) {
-    let image: [string, string, number?] = ['/images/mark.svg', 'gray mark', 12]
+    let image: [string, string, number?] = ["/images/mark.svg", "gray mark", 12]
 
-    if (day === true) image = ['/images/check.svg', 'green mark', 24]
-    if (day === false) image = ['/images/x.svg', 'red mark', 24]
+    if (day === true) image = ["/images/check.svg", "green mark", 24]
+    if (day === false) image = ["/images/x.svg", "red mark", 24]
 
     const [src, alt, size] = image
 

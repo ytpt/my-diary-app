@@ -3,7 +3,7 @@ import DayState from '../components/DayState';
 import Link from 'next/link';
 import { kv } from '@vercel/kv';
 
-type DutySchedule = {[duty: string]: Record<string, boolean>} | null;
+type DutySchedule = { [duty: string]: Record<string, boolean> } | null;
 
 export default async function Home() {
     const duties: DutySchedule = await kv.hgetall("duties") as DutySchedule | null;
@@ -39,9 +39,9 @@ export default async function Home() {
                         <section className="grid grid-cols-7 bg-neutral-800 rounded-md p-2">
                             {sortedWeekDays.map((day, index) => (
                                 <div key={day} className="flex flex-col">
-                                <span className="font-sans text-center text-xs text-white">
-                                  {day}
-                                </span>
+                                    <span className="font-sans text-center text-xs text-white">
+                                        {day}
+                                    </span>
                                     <DayState day={dutyTime[last7Days[index]]}/>
                                 </div>
                             ))}

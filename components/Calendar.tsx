@@ -1,6 +1,6 @@
 "use client"
 
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
 function getDayInMonth(month: number, year: number) {
     const date = new Date(year, month, 1);
