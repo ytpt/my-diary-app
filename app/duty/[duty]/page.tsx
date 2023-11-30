@@ -1,8 +1,10 @@
 import Link from 'next/link';
+import { kv } from '@vercel/kv';
 import Calendar from '../../../components/Calendar';
 
-export default async function Duty( { params: {duty} } : { params: {duty: string} } ) {
+export default async function Duty({params: {duty}}: {params: {duty: string}}) {
     const decodedDuty = decodeURI(duty);
+    const dutyTime: Record<string, boolean> | null = await kv.hget("duties", decodedDuty);
 
     return (
         <main className="container relative flex flex-col gap-8 px-12 pt-16">
@@ -12,7 +14,7 @@ export default async function Duty( { params: {duty} } : { params: {duty: string
             <Link href="/" className="flex items-center font-sans text-xs text-white">
                 ~Back
             </Link>
-            <Calendar/>
+            <Calendar duty={decodedDuty} dutyTime={dutyTime}/>
         </main>
     );
 };

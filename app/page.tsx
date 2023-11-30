@@ -1,28 +1,29 @@
 import Image from 'next/image'
-import DayState from '../components/DayState';
+import DayState from '@/components/DayState';
 import Link from 'next/link';
 import { kv } from '@vercel/kv';
 
 type DutySchedule = { [duty: string]: Record<string, boolean> } | null;
 
 export default async function Home() {
-    const duties: DutySchedule = await kv.hgetall("duties") as DutySchedule | null;
-    const today = new Date()
-    const todayWeekDay = today.getDay()
-    const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    const duties: DutySchedule = (await kv.hgetall("duties")) as DutySchedule | null;
+    const today = new Date();
+    const todayWeekDay = today.getDay();
+    const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-    const sortedWeekDays = weekDays.slice(todayWeekDay).concat(weekDays.slice(0, todayWeekDay))
+    const sortedWeekDays = weekDays.slice(todayWeekDay).concat(weekDays.slice(0, todayWeekDay));
+
     const last7Days = weekDays.map((_, index) => {
-        const date = new Date()
-        date.setDate(date.getDate() -index)
-        return date.toISOString().slice(0, 10)
-    }).reverse()
+        const date = new Date();
+        date.setDate(date.getDate() -index);
+        return date.toISOString().slice(0, 10);
+    }).reverse();
 
     return (
         <main className="container relative flex flex-col gap-8 px-4 pt-16">
             {Object.keys(duties).length === 0 && (
                 <h1 className="mt-20 text-4xl font-light text-white font-display text-center">
-                    You have no registered duty!
+                    You have no registered duty :(
                 </h1>
             )}
             {Object.entries(duties).map(([dutyName, dutyTime]) => (
