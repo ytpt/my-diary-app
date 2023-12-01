@@ -28,8 +28,8 @@ export default function NewDuty() {
                     id="duty"
                     className="p-2 font-sans text-xl text-white rounded-md bg-neutral-800"
                 />
-                <NewDutyButton type="submit" text="Save" bgColor="bg-[#45EDAD]"/>
-                <NewDutyButton type="button" text="Cancel" bgColor="bg-[#ed454d]"/>
+                <NewDutyButton text="Save" bgColor="bg-[#45EDAD]"/>
+                <NewDutyButton text="Cancel" bgColor="bg-[#ed454d]"/>
             </form>
         </main>
     );
