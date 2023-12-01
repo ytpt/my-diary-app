@@ -1,8 +1,4 @@
-export default function NewDutyButton({ text, bgColor }: {
-    text: string;
-    bgColor: string;
-}) {
-
+export default function NewDutyButton({ text, bgColor }: {text: string, bgColor: string}) {
     return (
         <button
             type={text === "Save" ? "submit" : "button"}
