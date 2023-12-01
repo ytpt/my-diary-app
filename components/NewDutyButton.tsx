@@ -1,5 +1,7 @@
+type ButtonType = "button" | "submit" | "reset";
+
 export default function NewDutyButton({ type, text, bgColor }: {
-    type: string;
+    type: ButtonType;
     text: string;
     bgColor: string;
 }) {
