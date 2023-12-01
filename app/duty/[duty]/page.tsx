@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { kv } from '@vercel/kv';
 import Calendar from '../../../components/Calendar';
 
-export default async function Duty({params: {duty}}: {params: {duty: string}}) {
+export default async function Duty({ params: {duty} }: {params: {duty: string}}) {
     const decodedDuty = decodeURI(duty);
     const dutyTime: Record<string, boolean> | null = await kv.hget("duties", decodedDuty);
 

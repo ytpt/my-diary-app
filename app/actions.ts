@@ -1,4 +1,4 @@
-"use server";
+'use server';
 
 import { kv } from '@vercel/kv';
 import { revalidatePath } from 'next/cache';
@@ -21,5 +21,10 @@ export async function toggleDuty({ duty, dutyTime, date, done }: ToggleDutyParam
 
     await kv.hset("duties", updatedDutyTime);
     revalidatePath("/duty/[duty]", "page");
+    revalidatePath("/");
+}
+
+export async function deleteDuty(duty: string) {
+    await kv.hdel("duties", duty);
     revalidatePath("/");
 }

@@ -1,6 +1,7 @@
-import { kv } from '@vercel/kv'
-import { revalidatePath } from 'next/cache'
-import { redirect } from 'next/navigation'
+import { kv } from '@vercel/kv';
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
+import NewDutyButton from '../../components/NewDutyButton';
 
 export default function NewDuty() {
     async function newDuty(formData: FormData) {
@@ -17,25 +18,18 @@ export default function NewDuty() {
             <h1 className="text-4xl font-light text-center text-white font-display">
                 new duty
             </h1>
-            <form action={newDuty} className="flex flex-col gap-4 mt-4">
+            <form
+                action={newDuty}
+                className="flex flex-col gap-4 mt-4"
+            >
                 <input
                     type="text"
                     name="duty"
                     id="duty"
                     className="p-2 font-sans text-xl text-white rounded-md bg-neutral-800"
                 />
-                <button
-                    type="submit"
-                    className="text-neutral-900 bg-[#45EDAD] font-display font-regular text-2xl p-2 rounded-md mt-8"
-                >
-                    Save
-                </button>
-                <button
-                    type="submit"
-                    className="text-neutral-900 bg-[#ed454d] font-display font-regular text-2xl p-2 rounded-md mt-8"
-                >
-                    Cancel
-                </button>
+                <NewDutyButton type="submit" text="Save" bgColor="bg-[#45EDAD]"/>
+                <NewDutyButton type="button"  text="Cancel" bgColor="bg-[#ed454d]"/>
             </form>
         </main>
     );
