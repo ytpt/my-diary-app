@@ -1,4 +1,4 @@
-type ButtonType = "button" | "submit" | "reset";
+type ButtonType = "button" | "submit";
 
 export default function NewDutyButton({ type, text, bgColor }: {
     type: ButtonType;
